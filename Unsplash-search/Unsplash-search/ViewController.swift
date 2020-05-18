@@ -10,60 +10,109 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var searchInput: UITextField!
+    // MARK: Outlets
+    @IBOutlet weak var collectionView: UICollectionView!
     
-
+    // MARK: Properties
+    var searchInput: UITextField!
+    let viewModel = ViewModel(apiClient: UnsplashClient())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.showLoading = {
+            if self.viewModel.isLoading {
+                // TODO: Show loading
+//                self.activityIndicator.startAnimating()
+                self.collectionView.alpha = 0.0
+            } else {
+//                self.activityIndicator.stopAnimating()
+                self.collectionView.alpha = 10.0
+            }
+        }
+        
+        viewModel.showError = { error in
+            print(error)
+        }
+        
+        viewModel.reloadData = {
+            self.collectionView.reloadData()
+        }
+        
+        viewModel.fetchPhotos()
+        
+        searchInput = UITextField(frame: CGRect(x: 10.0, y: 50.0, width: UIScreen.main.bounds.size.width - 20.0, height: 50.0))
+        searchInput.borderStyle = .line
+        searchInput.keyboardType = .default
+        searchInput.placeholder = "Enter something to search images"
+        searchInput.font = UIFont.systemFont(ofSize: 15.0)
         searchInput.delegate = self
-    }
-
-    @IBAction func searchButtonPressed(_ sender: UIButton) {
-        searchInput.endEditing(true)
-        makeSearch()
+        self.view.addSubview(searchInput)
+        
+        if let layout = collectionView.collectionViewLayout as? PinterestLayout {
+            layout.delegate = self
+        }
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
+//    @IBAction func searchButtonPressed(_ sender: UIButton) {
+//        self.apiClient.makeSearch(text: searchInput.text!)
+//        searchInput.endEditing(true)
+//    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchInput.endEditing(true)
-        makeSearch()
+        viewModel.searchPhotos(text: textField.text!)
+        textField.endEditing(true)
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        searchInput.text = ""
+        textField.text = ""
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if searchInput.text != "" {
+        if textField.text != "" {
             return true
         } else {
             textField.placeholder = "Type something"
             return false
         }
     }
-    
-    func makeSearch() {
-        if let url = URL.with(string: "photos/random?count=2") {
-            var urlRequest = URLRequest(url: url)
-            urlRequest.setValue("wC3_jyA6NlQL0kPY2_YEd-SEWQbhQF5OphfqgkmQbAw", forHTTPHeaderField: "Authorization")
-            
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url, completionHandler: <#T##(Data?, URLResponse?, Error?) -> Void#>)
-            
-            task.resume()
-        }
-    }
-    
 }
 
-extension URL {
-    private static var baseUrl: String {
-        return "https://api.unsplash.com/"
-    }
-    
-    static func with(string: String) -> URL? {
-        return URL(string: "\(baseUrl)\(string)")
+// MARK: Flow layout
+extension ViewController: PinterestLayoutDelegate {
+    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
+        let image = viewModel.cellViewModels[indexPath.item].image
+        return CGFloat(image.size.height)
     }
 }
 
+// MARK: Data source
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.cellViewModels.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
+        
+        let image = viewModel.cellViewModels[indexPath.item].image
+        
+        cell.imageView.image = image
+        
+        return cell
+    }
+}
+
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(self.viewModel.cellViewModels[indexPath.item])
+//        if #available(iOS 13.0, *) {
+//            let vc = storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController
+//            self.navigationController?.pushViewController(vc!, animated: true)
+//        } else {
+//            // Fallback on earlier versions
+//        }
+    }
+}

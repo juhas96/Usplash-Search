@@ -7,13 +7,3 @@
 //
 
 import Foundation
-
-struct Image: Decodable {
-    let id: String
-    let width: Int
-    let height: Int
-    let likes: Int
-    let color: String
-    let urls: URLs
-    let keyNotExist: String?
-}
