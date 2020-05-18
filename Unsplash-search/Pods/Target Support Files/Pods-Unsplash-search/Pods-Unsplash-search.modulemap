@@ -1,0 +1,6 @@
+framework module Pods_Unsplash_search {
+  umbrella header "Pods-Unsplash-search-umbrella.h"
+
+  export *
+  module * { export * }
+}
