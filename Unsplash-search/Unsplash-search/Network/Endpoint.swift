@@ -33,8 +33,8 @@ enum Order: String {
 }
 
 enum UnsplashEndpoint: Endpoint {
-    case photos(id: String, order: Order)
-    case search(id: String, text: String)
+    case photos(id: String, order: Order, page: Int)
+    case search(id: String, text: String, page: Int)
     case singlePhoto(id: String, photoId: String)
     
     var baseUrl: String {
@@ -48,21 +48,23 @@ enum UnsplashEndpoint: Endpoint {
         case .search:
             return "/search/photos"
         case .singlePhoto(let _, let photoId):
-            return "/search/photos/" + photoId
+            return "/photos/" + photoId
         }
     }
     
     var urlParameters: [URLQueryItem] {
         switch self {
-        case .photos(let id, let order):
+        case .photos(let id, let order, let page):
             return [
                 URLQueryItem(name: "client_id", value: id),
-                URLQueryItem(name: "order_by", value: order.rawValue)
+                URLQueryItem(name: "order_by", value: order.rawValue),
+                URLQueryItem(name: "page", value: String(page))
             ]
-        case .search(let id, let text):
+        case .search(let id, let text, let page):
             return [
                 URLQueryItem(name: "client_id", value: id),
-                URLQueryItem(name: "query", value: text)
+                URLQueryItem(name: "query", value: text),
+                URLQueryItem(name: "page", value: String(page))
             ]
         case .singlePhoto(let id, let _):
             return [

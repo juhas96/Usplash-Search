@@ -12,28 +12,37 @@ typealias Photos = [Photo]
 
 struct Photo: Codable {
     let id: String
-    let description: String
+    let description: String?
     let urls: URLS
-    let user: User
+//    let usxer: User?
     
-    init(id: String, description: String, urls: URLS, user: User) {
-        self.id = id
-        self.description = description
-        self.urls = urls
-        self.user = user
-    }
+//    init(id: String, description: String, urls: URLS, user: User) {
+//        self.id = id
+//        self.description = description
+//        self.urls = urls
+//        self.user = user
+//    }
+}
+
+struct SinglePhoto: Codable {
+    let id: String?
+    let urls: URLS
+    let description: String?
+    let likes: Int? = 0
+    let liked_by_user: Bool
+    let user: User?
 }
 
 struct User: Codable {
-    let id: String
-    let name: String
-    let bio: String
+    let id: String?
+    let name: String?
+    let bio: String?
     
-    init(id: String, name: String, bio: String) {
-        self.id = id
-        self.name = name
-        self.bio = bio
-    }
+//    init(id: String, name: String, bio: String) {
+//        self.id = id
+//        self.name = name
+//        self.bio = bio
+//    }
 }
 
 struct SearchedPhoto: Codable {
@@ -48,12 +57,4 @@ struct URLS: Codable {
     let regular: URL
     let small: URL
     let thumb: URL
-    
-    init(raw: URL, full: URL, regular: URL, small: URL, thumb: URL) {
-        self.raw = raw
-        self.full = full
-        self.regular = regular
-        self.small = small
-        self.thumb = thumb
-    }
 }

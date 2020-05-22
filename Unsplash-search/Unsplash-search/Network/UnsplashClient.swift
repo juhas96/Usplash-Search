@@ -22,7 +22,7 @@ class UnsplashClient: APIClient {
         search(with: request, completion: completion)
     }
     
-    func fetchSingleImage(with endpoint: UnsplashEndpoint, completion: @escaping (Response<Photo>) -> Void) {
+    func fetchSingleImage(with endpoint: UnsplashEndpoint, completion: @escaping (Response<SinglePhoto>) -> Void) {
         let request = endpoint.request
         getOne(with: request, completion: completion)
     }

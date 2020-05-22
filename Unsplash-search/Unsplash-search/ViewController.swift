@@ -49,9 +49,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         searchInput.delegate = self
         self.view.addSubview(searchInput)
         
-        if let layout = collectionView.collectionViewLayout as? PinterestLayout {
-            layout.delegate = self
-        }
+//        if let layout = collectionView.collectionViewLayout as? PinterestLayout {
+//            layout.delegate = self
+//        }
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
@@ -61,7 +61,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        viewModel.searchPhotos(text: textField.text!)
+//        viewModel.searchPhotos(text: textField.text!)
         textField.endEditing(true)
         return true
     }
@@ -81,12 +81,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
 }
 
 // MARK: Flow layout
-extension ViewController: PinterestLayoutDelegate {
-    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-        let image = viewModel.cellViewModels[indexPath.item].image
-        return CGFloat(image.size.height)
-    }
-}
+//extension ViewController: PinterestLayoutDelegate {
+//    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
+//        let image = viewModel.cellViewModels[indexPath.item].image
+//        return CGFloat(image.size.height)
+//    }
+//}
 
 // MARK: Data source
 extension ViewController: UICollectionViewDataSource {

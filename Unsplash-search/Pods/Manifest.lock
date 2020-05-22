@@ -1,3 +1,22 @@
-PODFILE CHECKSUM: 50f27673ee6eb5b26aeff8a2c885d983517c59e2
+PODS:
+  - BulletinBoard (4.1.1)
+  - Kingfisher (5.14.0):
+    - Kingfisher/Core (= 5.14.0)
+  - Kingfisher/Core (5.14.0)
+
+DEPENDENCIES:
+  - BulletinBoard
+  - Kingfisher
+
+SPEC REPOS:
+  trunk:
+    - BulletinBoard
+    - Kingfisher
+
+SPEC CHECKSUMS:
+  BulletinBoard: 25cf38fa1dd9292936ea6122b95ec2ec9b773e9c
+  Kingfisher: 7b64389a43139c903ec434788344c288217c792d
+
+PODFILE CHECKSUM: 83cbdf781cb0bf44d845a358f488429ab12704b7
 
 COCOAPODS: 1.9.1
