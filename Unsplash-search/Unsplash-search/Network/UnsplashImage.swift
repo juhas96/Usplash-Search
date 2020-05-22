@@ -14,14 +14,6 @@ struct Photo: Codable {
     let id: String
     let description: String?
     let urls: URLS
-//    let usxer: User?
-    
-//    init(id: String, description: String, urls: URLS, user: User) {
-//        self.id = id
-//        self.description = description
-//        self.urls = urls
-//        self.user = user
-//    }
 }
 
 struct SinglePhoto: Codable {
@@ -37,12 +29,6 @@ struct User: Codable {
     let id: String?
     let name: String?
     let bio: String?
-    
-//    init(id: String, name: String, bio: String) {
-//        self.id = id
-//        self.name = name
-//        self.bio = bio
-//    }
 }
 
 struct SearchedPhoto: Codable {

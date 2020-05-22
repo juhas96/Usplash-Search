@@ -24,8 +24,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="192" height="165"/>
                         <color key="backgroundColor" white="1" alpha="0.50393375880281688" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="I6A-Xr-wtW">
-                        <rect key="frame" x="154" y="127.5" width="30" height="29"/>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SF_checkmark_circle-1" translatesAutoresizingMaskIntoConstraints="NO" id="I6A-Xr-wtW">
+                        <rect key="frame" x="154" y="127" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="d3i-yu-VWy"/>
                             <constraint firstAttribute="width" constant="30" id="wXf-r2-xBY"/>
@@ -56,6 +56,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
+        <image name="SF_checkmark_circle-1" width="44" height="44"/>
     </resources>
 </document>

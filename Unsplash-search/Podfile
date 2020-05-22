@@ -6,6 +6,4 @@ target 'Unsplash-search' do
   use_frameworks!
 
   # Pods for Unsplash-search
- pod 'BulletinBoard'
-pod 'Kingfisher'
 end

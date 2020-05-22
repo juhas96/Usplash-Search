@@ -96,7 +96,6 @@ class CollectionViewController: UIViewController {
         
         searchInput.backgroundColor = .white
         searchInput.borderStyle = .roundedRect
-//        searchInput.placeholder = "Search photos"
         searchInput.delegate = self
         searchInput.textColor = .black
         self.view.addSubview(searchInput)
@@ -332,22 +331,5 @@ extension CollectionViewController: UITextFieldDelegate {
             textField.placeholder = "Type something"
             return false
         }
-    }
-}
-
-// MARK: PUSH NOTIFICATIONS
-extension CollectionViewController {
-    func setupUserNotification() {
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            
-        }
-        
-        let content = UNMutableNotificationContent()
-        content.title = "Hey I'm new notification"
-        content.body = "Look at me"
-        
-        let uuid = UUID().uuidString
-//        let request = UNNotificationRequest(identifier: uuid, content: content, trigger: <#T##UNNotificationTrigger?#>)
     }
 }

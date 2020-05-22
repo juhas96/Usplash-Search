@@ -47,7 +47,7 @@ enum UnsplashEndpoint: Endpoint {
             return "/photos"
         case .search:
             return "/search/photos"
-        case .singlePhoto(let _, let photoId):
+        case .singlePhoto(_, let photoId):
             return "/photos/" + photoId
         }
     }
@@ -66,7 +66,7 @@ enum UnsplashEndpoint: Endpoint {
                 URLQueryItem(name: "query", value: text),
                 URLQueryItem(name: "page", value: String(page))
             ]
-        case .singlePhoto(let id, let _):
+        case .singlePhoto(let id, _):
             return [
                 URLQueryItem(name: "client_id", value: id),
             ]

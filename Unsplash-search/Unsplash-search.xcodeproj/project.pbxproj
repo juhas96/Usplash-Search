@@ -178,7 +178,6 @@
 				563D4E2424728E4A001D79CA /* Sources */,
 				563D4E2524728E4A001D79CA /* Frameworks */,
 				563D4E2624728E4A001D79CA /* Resources */,
-				882051B392AF2A2188E72FE8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -238,23 +237,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		882051B392AF2A2188E72FE8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Unsplash-search/Pods-Unsplash-search-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Unsplash-search/Pods-Unsplash-search-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Unsplash-search/Pods-Unsplash-search-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B339AFA800DF9A27DDFA9306 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

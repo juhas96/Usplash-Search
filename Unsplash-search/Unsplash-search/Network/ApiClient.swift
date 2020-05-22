@@ -36,13 +36,13 @@ extension APIClient {
             }
             
             guard let response = response as? HTTPURLResponse, 200..<300 ~= response.statusCode else {
-                print(error)
+                print("ERROR IN RESPONSE")
                 return
             }
             
             
             guard let value = try? JSONDecoder().decode([T].self, from: data!) else {
-                print(error)
+                print("ERROR IN DECODER")
                 return
             }
         

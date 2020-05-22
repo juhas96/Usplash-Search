@@ -57,8 +57,6 @@ class ViewModel {
                             self.photos = searchedPhoto.results
                         case .error(let error):
                             self.showError?(error)
-                        default:
-                            break
                     }
                 }
             case false:
@@ -69,8 +67,6 @@ class ViewModel {
                             self.photos = photos
                         case .error(let error):
                             self.showError?(error)
-                        default:
-                            break
                     }
                 }
             default:
